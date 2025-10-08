@@ -57,6 +57,19 @@ Ball >> step [
 	position := position + velocity
 ]
 
+{ #category : #'as yet unclassified' }
+Ball >> updateStateWithin: aRectangle forGame: aPongGame [
+    self step.
+    self handleBounceWithin: aRectangle.
+
+    (self isOutOfPlayIn: aRectangle) ifTrue: [
+        "Decirle al juego que anote"
+        aPongGame handleScoreFor: self. 
+        "Reiniciarse"
+        self resetIn: aRectangle.
+    ]
+]
+
 { #category : #stepping }
 Ball >> velocity [
 	^ velocity
