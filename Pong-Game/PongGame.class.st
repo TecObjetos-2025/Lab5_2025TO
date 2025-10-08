@@ -26,3 +26,20 @@ PongGame >> initialize [
 	playerOnePaddle position: (bounds left + 20) @ (bounds center y).
 	playerTwoPaddle position: (bounds right - 20) @ (bounds center y).
 ]
+
+{ #category : #stepping }
+PongGame >> step [
+    "Tick de Juego: Avanzar un fotograma"
+    ball step.
+    ball handleBounceWithin: bounds.
+
+    (ball isOutOfPlayIn: bounds) ifTrue: [
+        "Si la pelota sale, determinar quien anota"
+        (ball position x < bounds center x) "Por donde sale?"
+            ifTrue: [ scoreboard increaseScoreForPlayerTwo ] "Sale izquierda, punto para J2"
+            ifFalse: [ scoreboard increaseScoreForPlayerOne ]. "Sale derecha, punto para J1"
+
+        "Reiniciar: Nuevo saque"
+        ball resetIn: bounds.
+    ]
+]

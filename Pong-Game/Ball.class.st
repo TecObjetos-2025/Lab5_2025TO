@@ -43,6 +43,14 @@ Ball >> position [
 	^ position
 ]
 
+{ #category : #initialization }
+Ball >> resetIn: aRectangle [
+    "Poner la pelota en el centro"
+    position := aRectangle center.
+    "Velocidad aleatoria para variar el saque: En las posibles 4 diagonales"
+    velocity := ((#(1 -1) atRandom) * 5) @ ((#(1 -1) atRandom) * 5).
+]
+
 { #category : #stepping }
 Ball >> step [
 	"Suma automatica de clases Point"
