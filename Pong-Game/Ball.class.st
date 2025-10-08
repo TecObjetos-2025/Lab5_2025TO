@@ -31,6 +31,12 @@ Ball >> initialize [
     velocity := 5 @ 5.
 ]
 
+{ #category : #testing }
+Ball >> isOutOfPlayIn: aRectangle [
+    "Responder true si la pelota se ha salido por la izquierda o la derecha"
+    ^ self position x < aRectangle left or: [ self position x > aRectangle right ]
+]
+
 { #category : #stepping }
 Ball >> position [
 	"Similar a return en otros lenguajes"
