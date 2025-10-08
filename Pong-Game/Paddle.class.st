@@ -14,3 +14,8 @@ Paddle >> initialize [
 	position := 50 @ 200. "Posición inicial a la izquierda y al centro"
 	size := 10 @ 80. "10 de ancho, 80 de alto"
 ]
+
+{ #category : #accessing }
+Paddle >> position: aPoint [
+	position := aPoint
+]
