@@ -15,3 +15,20 @@ Ball >> initialize [
     position := 100 @ 100.
     velocity := 5 @ 5.
 ]
+
+{ #category : #stepping }
+Ball >> position [
+	"Similar a return en otros lenguajes"
+	^ position
+]
+
+{ #category : #stepping }
+Ball >> step [
+	"Suma automatica de clases Point"
+	position := position + velocity
+]
+
+{ #category : #stepping }
+Ball >> velocity [
+	^ velocity
+]
