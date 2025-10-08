@@ -11,7 +11,7 @@ Class {
 	#category : #'Pong-Game'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'game logic' }
 PongGame >> handleScoreFor: aBall [
     "Recibir aviso y decidir a quién darle el punto"
     (aBall position x < bounds center x)

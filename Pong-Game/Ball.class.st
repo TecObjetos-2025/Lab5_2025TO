@@ -8,7 +8,7 @@ Class {
 	#category : #'Pong-Game'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'game logic' }
 Ball >> handleBounceWithin: aRectangle [
     | newVelocity minY maxY| "Variable temporal"
 	"Obtener los limmites superior e inferior"
@@ -57,7 +57,7 @@ Ball >> step [
 	position := position + velocity
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'game logic' }
 Ball >> updateStateWithin: aRectangle forGame: aPongGame [
     self step.
     self handleBounceWithin: aRectangle.

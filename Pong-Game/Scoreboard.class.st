@@ -8,12 +8,12 @@ Class {
 	#category : #'Pong-Game'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'game logic' }
 Scoreboard >> increaseScoreForPlayerOne [
     playerOneScore := playerOneScore + 1
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'game logic' }
 Scoreboard >> increaseScoreForPlayerTwo [
     playerTwoScore := playerTwoScore + 1
 ]
