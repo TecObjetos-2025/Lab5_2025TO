@@ -8,6 +8,21 @@ Class {
 	#category : #'Pong-Game'
 }
 
+{ #category : #'as yet unclassified' }
+Ball >> handleBounceWithin: aRectangle [
+    | newVelocity minY maxY| "Variable temporal"
+	"Obtener los limmites superior e inferior"
+	minY := aRectangle top.
+	maxY := aRectangle bottom.
+    newVelocity := self velocity.
+
+    (self position y < minY or: [ self position y > maxY ])
+	"Invertir la direccion vertical para simular rebote"
+        ifTrue: [ newVelocity := newVelocity x @ (newVelocity y * -1) ].
+
+    self velocity: newVelocity
+]
+
 { #category : #initialization }
 Ball >> initialize [
     "Inicializa la posición y velocidad de la bola"
@@ -31,4 +46,9 @@ Ball >> step [
 { #category : #stepping }
 Ball >> velocity [
 	^ velocity
+]
+
+{ #category : #accessing }
+Ball >> velocity: aPoint [
+    velocity := aPoint
 ]
