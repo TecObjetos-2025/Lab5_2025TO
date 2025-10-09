@@ -16,6 +16,16 @@ Paddle >> initialize [
 ]
 
 { #category : #accessing }
+Paddle >> position [
+	^ position
+]
+
+{ #category : #accessing }
 Paddle >> position: aPoint [
 	position := aPoint
+]
+
+{ #category : #accessing }
+Paddle >> size [ 
+	^ size
 ]

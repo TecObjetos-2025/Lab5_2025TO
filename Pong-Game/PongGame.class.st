@@ -11,6 +11,16 @@ Class {
 	#category : #'Pong-Game'
 }
 
+{ #category : #accessing }
+PongGame >> ball [
+	^ ball 
+]
+
+{ #category : #accessing }
+PongGame >> bounds [
+	^ bounds 
+]
+
 { #category : #'game logic' }
 PongGame >> handleScoreFor: aBall [
     "Recibir aviso y decidir a quién darle el punto"
@@ -33,6 +43,21 @@ PongGame >> initialize [
 	"Ajustar las posiciones iniciales de las paletas"
 	playerOnePaddle position: (bounds left + 20) @ (bounds center y).
 	playerTwoPaddle position: (bounds right - 20) @ (bounds center y).
+]
+
+{ #category : #accessing }
+PongGame >> playerOnePaddle [
+	^ playerOnePaddle 
+]
+
+{ #category : #accessing }
+PongGame >> playerTwoPaddle [
+	^ playerTwoPaddle 
+]
+
+{ #category : #accessing }
+PongGame >> scoreboard [
+	^ scoreboard 
 ]
 
 { #category : #stepping }
