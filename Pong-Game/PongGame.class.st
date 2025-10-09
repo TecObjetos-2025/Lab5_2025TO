@@ -66,9 +66,8 @@ PongGame >> step [
     ball step.
     ball handleBounceWithin: bounds.
 
-    "NUEVA LÓGICA DE COLISIÓN"
-    (ball bounds intersects: playerOnePaddle bounds) ifTrue: [ ball reverseXVelocity ].
-    (ball bounds intersects: playerTwoPaddle bounds) ifTrue: [ ball reverseXVelocity ].
+    "NUEVA LÓGICA DE COLISIÓN (Pelota ahora se encarga)"
+    ball handleCollisionsWith: { playerOnePaddle . playerTwoPaddle }.
 
     (ball isOutOfPlayIn: bounds) ifTrue: [
         (ball position x < bounds center x)

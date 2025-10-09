@@ -29,6 +29,15 @@ Ball >> handleBounceWithin: aRectangle [
     self velocity: newVelocity
 ]
 
+{ #category : #'game logic' }
+Ball >> handleCollisionsWith: aCollectionOfPaddles [
+    aCollectionOfPaddles do: [ :aPaddle |
+        (self bounds intersects: aPaddle bounds) ifTrue: [
+            self reverseXVelocity
+        ]
+    ]
+]
+
 { #category : #initialization }
 Ball >> initialize [
     "Inicializa la posición y velocidad de la bola"
