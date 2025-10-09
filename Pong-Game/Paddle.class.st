@@ -15,6 +15,18 @@ Paddle >> initialize [
 	size := 10 @ 80. "10 de ancho, 80 de alto"
 ]
 
+{ #category : #actions }
+Paddle >> moveDown [
+    "Sumar 10 a la coordenada Y para moverse hacia abajo"
+    position := position x @ (position y + 10).
+]
+
+{ #category : #actions }
+Paddle >> moveUp [
+    "Restar 10 a la coordenada Y para moverse hacia arriba"
+    position := position x @ (position y - 10).
+]
+
 { #category : #accessing }
 Paddle >> position [
 	^ position
