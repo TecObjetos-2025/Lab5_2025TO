@@ -62,6 +62,18 @@ PongGame >> scoreboard [
 
 { #category : #stepping }
 PongGame >> step [
-    "Tick de Juego: Avanzar un fotograma"
-    ball updateStateWithin: bounds forGame: self.
+    "El 'tick' principal del juego. Avanzar un fotograma."
+    ball step.
+    ball handleBounceWithin: bounds.
+
+    "NUEVA LÓGICA DE COLISIÓN"
+    (ball bounds intersects: playerOnePaddle bounds) ifTrue: [ ball reverseXVelocity ].
+    (ball bounds intersects: playerTwoPaddle bounds) ifTrue: [ ball reverseXVelocity ].
+
+    (ball isOutOfPlayIn: bounds) ifTrue: [
+        (ball position x < bounds center x)
+            ifTrue: [ scoreboard increaseScoreForPlayerTwo ]
+            ifFalse: [ scoreboard increaseScoreForPlayerOne ].
+        ball resetIn: bounds
+    ]
 ]

@@ -8,6 +8,12 @@ Class {
 	#category : #'Pong-Game'
 }
 
+{ #category : #accessing }
+Ball >> bounds [
+    "Lo que ocupa la pelota"
+    ^ position extent: 10@10
+]
+
 { #category : #'game logic' }
 Ball >> handleBounceWithin: aRectangle [
     | newVelocity minY maxY| "Variable temporal"
@@ -49,6 +55,12 @@ Ball >> resetIn: aRectangle [
     position := aRectangle center.
     "Velocidad aleatoria para variar el saque: En las posibles 4 diagonales"
     velocity := ((#(1 -1) atRandom) * 5) @ ((#(1 -1) atRandom) * 5).
+]
+
+{ #category : #'game logic' }
+Ball >> reverseXVelocity [
+    "Invierte la velocidad en el eje X: Para rebote horizontal"
+    self velocity: (velocity x * -1) @ velocity y
 ]
 
 { #category : #stepping }

@@ -8,6 +8,12 @@ Class {
 	#category : #'Pong-Game'
 }
 
+{ #category : #accessing }
+Paddle >> bounds [
+    "El rectángulo que ocupa la paleta"
+    ^ position extent: size
+]
+
 { #category : #initialization }
 Paddle >> initialize [
 	super initialize.
