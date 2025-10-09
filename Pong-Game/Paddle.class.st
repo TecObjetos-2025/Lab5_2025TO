@@ -27,10 +27,30 @@ Paddle >> moveDown [
     position := position x @ (position y + 10).
 ]
 
+{ #category : #'game controls' }
+Paddle >> moveDownWithin: aRectangle [
+    | newY |
+    newY := self position y + 10.
+    "Solo mover si la nueva posición inferior no se sale del límite inferior"
+    ( (newY + self size y) <= aRectangle bottom) ifTrue: [
+        position := self position x @ newY
+    ]
+]
+
 { #category : #actions }
 Paddle >> moveUp [
     "Restar 10 a la coordenada Y para moverse hacia arriba"
     position := position x @ (position y - 10).
+]
+
+{ #category : #'game controls' }
+Paddle >> moveUpWithin: aRectangle [
+    | newY |
+    newY := self position y - 10.
+    "Solo se puede mover si la nueva posición superior no se sale del límite superior"
+    (newY >= aRectangle top) ifTrue: [
+        position := self position x @ newY
+    ]
 ]
 
 { #category : #accessing }
@@ -44,6 +64,6 @@ Paddle >> position: aPoint [
 ]
 
 { #category : #accessing }
-Paddle >> size [ 
-	^ size
+Paddle >> size [
+    ^ size
 ]

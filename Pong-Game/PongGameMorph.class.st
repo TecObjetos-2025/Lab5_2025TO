@@ -55,12 +55,12 @@ PongGameMorph >> initialize [
 { #category : #'event handling' }
 PongGameMorph >> keyDown: anEvent [
     "Controles para el Jugador 1 (W y S)"
-    (anEvent keyCharacter = $w) ifTrue: [ game playerOnePaddle moveUp ].
-    (anEvent keyCharacter = $s) ifTrue: [ game playerOnePaddle moveDown ].
+    (anEvent keyCharacter = $w) ifTrue: [ game playerOnePaddle moveUpWithin: game bounds ].
+    (anEvent keyCharacter = $s) ifTrue: [ game playerOnePaddle moveDownWithin: game bounds ].
 
     "Controles para el Jugador 2 (Flecha Arriba y Abajo)"
-    (anEvent keyValue = 30) ifTrue: [ game playerTwoPaddle moveUp ].
-    (anEvent keyValue = 31) ifTrue: [ game playerTwoPaddle moveDown ].
+    (anEvent keyValue = 30) ifTrue: [ game playerTwoPaddle moveUpWithin: game bounds ].
+    (anEvent keyValue = 31) ifTrue: [ game playerTwoPaddle moveDownWithin: game bounds ].
 ]
 
 { #category : #'event handling' }

@@ -18,7 +18,7 @@ PongGame >> ball [
 
 { #category : #accessing }
 PongGame >> bounds [
-	^ bounds 
+    ^ bounds
 ]
 
 { #category : #'game logic' }
