@@ -57,7 +57,7 @@ PongGame >> playerTwoPaddle [
 
 { #category : #accessing }
 PongGame >> scoreboard [
-	^ scoreboard 
+    ^ scoreboard
 ]
 
 { #category : #stepping }

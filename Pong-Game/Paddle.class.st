@@ -30,7 +30,7 @@ Paddle >> moveDown [
 { #category : #'game controls' }
 Paddle >> moveDownWithin: aRectangle [
     | newY |
-    newY := self position y + 10.
+    newY := self position y + 20.
     "Solo mover si la nueva posición inferior no se sale del límite inferior"
     ( (newY + self size y) <= aRectangle bottom) ifTrue: [
         position := self position x @ newY
@@ -46,7 +46,7 @@ Paddle >> moveUp [
 { #category : #'game controls' }
 Paddle >> moveUpWithin: aRectangle [
     | newY |
-    newY := self position y - 10.
+    newY := self position y - 20.
     "Solo se puede mover si la nueva posición superior no se sale del límite superior"
     (newY >= aRectangle top) ifTrue: [
         position := self position x @ newY

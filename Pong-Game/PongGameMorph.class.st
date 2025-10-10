@@ -5,7 +5,8 @@ Class {
 		'game',
 		'ballMorph',
 		'p1PaddleMorph',
-		'p2PaddleMorph'
+		'p2PaddleMorph',
+		'scoreboardMorph'
 	],
 	#category : #'Pong-Game'
 }
@@ -22,6 +23,7 @@ PongGameMorph >> handlesMouseOver: anEvent [
 
 { #category : #initialization }
 PongGameMorph >> initialize [
+	 | scoreText |
     super initialize.
 
     "Crear el modelo del juego"
@@ -50,6 +52,19 @@ PongGameMorph >> initialize [
     self addMorph: ballMorph.
     self addMorph: p1PaddleMorph.
     self addMorph: p2PaddleMorph.
+
+    "Crear el Morph del marcador"
+    scoreboardMorph := TextMorph new.
+
+  	 scoreText := '0 - 0' asText.  
+	 scoreText addAttribute: (TextColor color: Color white).
+	 scoreText addAttribute: (TextFontReference toFont: (LogicalFont familyName: 'Source Sans Pro' pointSize: 20)).
+
+	 scoreboardMorph contents: scoreText.
+	 scoreboardMorph position: self center x - 30 @ 10.
+
+    "Añadir como sub-morph"
+    self addMorph: scoreboardMorph.
 ]
 
 { #category : #'event handling' }
@@ -77,12 +92,23 @@ PongGameMorph >> mouseLeave: anEvent [
 
 { #category : #stepping }
 PongGameMorph >> step [
+	 | scoreString scoreText |
 	"Avanzar la logica del juego"
     game step.
 
     ballMorph position: game ball position.
     p1PaddleMorph position: game playerOnePaddle position.
     p2PaddleMorph position: game playerTwoPaddle position.
+
+	 "Actualizar el texto del marcador"
+    scoreString := game scoreboard playerOneScore asString, ' - ', game scoreboard playerTwoScore asString.
+
+	 scoreText := scoreString asText.
+	 scoreText addAttribute: (TextColor color: Color white).
+	 scoreText addAttribute: (TextFontReference toFont: (LogicalFont familyName: 'Source Sans Pro' pointSize: 20)).
+
+	 scoreboardMorph contents: scoreText.
+
 ]
 
 { #category : #stepping }

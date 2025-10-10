@@ -24,3 +24,13 @@ Scoreboard >> initialize [
 	playerOneScore := 0.
 	playerTwoScore := 0.
 ]
+
+{ #category : #accessing }
+Scoreboard >> playerOneScore [
+    ^ playerOneScore
+]
+
+{ #category : #accessing }
+Scoreboard >> playerTwoScore [
+    ^ playerTwoScore
+]
